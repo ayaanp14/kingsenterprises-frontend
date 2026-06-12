@@ -14,12 +14,10 @@ export const checkAuth = createAsyncThunk(
     }
   },
   {
-    condition: (_, { getState }) => {
-      const { auth } = getState();
-      if (!localStorage.getItem('token') || auth.user) {
-        // Skip calling if no token, or user is already loaded
-        return false;
-      }
+    condition: () => {
+      // Only skip if there's no token at all — always re-fetch if token exists
+      // so avatar and role are always fresh from the DB
+      return !!localStorage.getItem('token');
     }
   }
 );

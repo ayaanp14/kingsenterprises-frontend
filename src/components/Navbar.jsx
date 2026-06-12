@@ -304,13 +304,19 @@ export default function Navbar() {
                     <Avatar
                       alt={user.name}
                       src={user.avatar || ''}
+                      imgProps={{ referrerPolicy: 'no-referrer' }}
                       sx={{
                         width: 38,
                         height: 38,
                         border: '2px solid',
                         borderColor: 'secondary.main',
+                        bgcolor: 'primary.main',
+                        fontSize: '1rem',
+                        fontWeight: 700,
                       }}
-                    />
+                    >
+                      {!user.avatar && user.name ? user.name.charAt(0).toUpperCase() : null}
+                    </Avatar>
                   </IconButton>
                 </Tooltip>
                 <Menu

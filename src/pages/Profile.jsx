@@ -96,10 +96,22 @@ export default function Profile() {
             <CardContent>
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 3 }}>
                 <Avatar
-                  src={user.avatar}
+                  src={user.avatar || ''}
                   alt={user.name}
-                  sx={{ width: 100, height: 100, border: '3px solid', borderColor: 'secondary.main', mb: 2 }}
-                />
+                  imgProps={{ referrerPolicy: 'no-referrer' }}
+                  sx={{
+                    width: 100,
+                    height: 100,
+                    border: '3px solid',
+                    borderColor: 'secondary.main',
+                    mb: 2,
+                    bgcolor: 'primary.main',
+                    fontSize: '2.5rem',
+                    fontWeight: 700,
+                  }}
+                >
+                  {!user.avatar && user.name ? user.name.charAt(0).toUpperCase() : null}
+                </Avatar>
                 <Typography variant="h5" sx={{ fontWeight: 800, color: 'primary.main' }}>
                   {user.name}
                 </Typography>
